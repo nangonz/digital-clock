@@ -48,7 +48,7 @@ body {
   position: absolute;
   width: 0.25rem;
   height: 1rem;
-  background: rgb(88, 14, 215);
+  background: rgb(53, 124, 216);
   z-index: 1;
 }
 
@@ -122,7 +122,7 @@ body {
   width: 1rem;
   height: 1rem;
   margin: auto;
-  background: rgb(88, 14, 215);
+  background: rgb(39, 122, 255);
   border-radius: 50%;
 }
 
@@ -133,7 +133,7 @@ body {
   width: 0.2em;
   height: 25%;
   margin: auto;
-  background: rgb(88, 23, 202);
+  background: rgb(39, 122, 255);
   border-radius: 50%;
 }
 
