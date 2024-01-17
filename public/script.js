@@ -1,5 +1,8 @@
 const dayElement = document.querySelector(".day");
 const dateElement = document.querySelector(".date");
+const hourElement = document.querySelector(".h");
+const minutesElement = document.querySelector(".m");
+const secondsElement = document.querySelector(".seconds");
 
 const days = {
   0: "Sunday",
@@ -31,21 +34,29 @@ function getTime() {
   const h = date.getHours();
   const m = date.getMinutes();
   const s = date.getSeconds();
+  const mils = date.getMilliseconds();
   const day = date.getDay();
   const d = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
 
   dayElement.innerHTML = days[day];
-  dateElement.innerHTML = formatDate({ day, month, year });
+  dateElement.innerHTML = formatedDate({ day, month, year });
+  hourElement.innerHTML = formatedHour(h);
+  minutesElement.innerHTML = m;
+  console.log(s);
 }
 
 setInterval(getTime(), 0);
 
-function formatDate({ day, month, year }) {
+function formatedDate({ day, month, year }) {
   return `${day} ${
     months[month].length > 5 ? months[month].slice(0, 3) : months[month]
   } 
   ${year}
   `;
+}
+
+function formatedHour(hour) {
+  return hour.toString().length == 1 ? `0${hour}:` : `${hour}:`;
 }
