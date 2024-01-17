@@ -1,8 +1,9 @@
 const dayElement = document.querySelector(".day");
 const dateElement = document.querySelector(".date");
-const hourElement = document.querySelector(".h");
-const minutesElement = document.querySelector(".m");
+const hourElement = document.querySelector(".hm");
 const secondsElement = document.querySelector(".seconds");
+const am_pm = document.querySelector(".am-pm");
+const pointer = document.querySelector(".secondHand");
 
 const days = {
   0: "Sunday",
@@ -31,32 +32,41 @@ const months = {
 
 function getTime() {
   const date = new Date();
-  const h = date.getHours();
-  const m = date.getMinutes();
-  const s = date.getSeconds();
-  const mils = date.getMilliseconds();
-  const day = date.getDay();
-  const d = date.getDate();
+  const hours = date.getHours();
+  const min = date.getMinutes();
+  const seconds = date.getSeconds();
+  const weekDay = date.getDay();
+  const monthDay = date.getDate();
   const month = date.getMonth();
   const year = date.getFullYear();
 
-  dayElement.innerHTML = days[day];
-  dateElement.innerHTML = formatedDate({ day, month, year });
-  hourElement.innerHTML = formatedHour(h);
-  minutesElement.innerHTML = m;
-  console.log(s);
+  dayElement.innerHTML = days[weekDay];
+  dateElement.innerHTML = formatedDate({ monthDay, month, year });
+  hourElement.innerHTML = formatedHour({ hours, min });
+  secondsElement.innerHTML = formatSeconds({ seconds });
+  am_pm.innerHTML = hours >= 12 ? "PM" : "AM";
+  pointer.style.transform = `rotate(${seconds * 6}deg)`;
 }
 
-setInterval(getTime(), 0);
+setInterval(getTime, 0);
 
-function formatedDate({ day, month, year }) {
-  return `${day} ${
+function formatedDate({ monthDay, month, year }) {
+  return `${monthDay} ${
     months[month].length > 5 ? months[month].slice(0, 3) : months[month]
   } 
   ${year}
   `;
 }
 
-function formatedHour(hour) {
-  return hour.toString().length == 1 ? `0${hour}:` : `${hour}:`;
+function formatedHour({ hours, min }) {
+  let formatHours = hours.toString().length == 1 ? `0${hours}` : `${hours}`;
+  let formatMin = min.toString().length == 1 ? `0${min}` : `${min}`;
+
+  return `${formatHours}:${formatMin}`;
+}
+
+function formatSeconds({ seconds }) {
+  let formatSeconds = seconds.toString().padStart(2, "0");
+
+  return `00.${formatSeconds}`;
 }

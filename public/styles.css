@@ -111,6 +111,7 @@ body {
   height: 50%;
   rotate: 0;
   border-radius: 0 0 50% 50%;
+  transform-origin: bottom;
 }
 
 .clock-inner .secondHand::before {
