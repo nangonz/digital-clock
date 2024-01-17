@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 * {
   padding: 0;
   margin: 0;
   font-size: 14px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
 
@@ -26,17 +26,19 @@ body {
   height: 25rem;
   background: #fff;
   border-radius: 50%;
-  box-shadow: 16px 16px 30px #bcbcbc,
-              -8px -8px 20px #fafafa;
+  box-shadow: 16px 16px 30px #bcbcbc, -8px -8px 20px #fafafa;
 }
 
 .clock-outer::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   margin: auto;
-  background: linear-gradient(to right bottom rgba(255, 255, 255, .5), rgba(255, 255, 255, .3));
+  background: linear-gradient(
+    to right bottom rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.3)
+  );
   backdrop-filter: blur(1px);
   border-radius: 50%;
   z-index: 1;
@@ -44,7 +46,7 @@ body {
 
 .clock-outer .indicator {
   position: absolute;
-  width: .25rem;
+  width: 0.25rem;
   height: 1rem;
   background: rgb(88, 14, 215);
   z-index: 1;
@@ -63,7 +65,7 @@ body {
 }
 .clock-outer .indicator:nth-child(4) {
   top: inherit;
-  left: 0.30rem;
+  left: 0.3rem;
   rotate: 90deg;
 }
 
@@ -79,7 +81,7 @@ body {
 }
 
 @keyframes pendulum {
-  0%{
+  0% {
     rotate: 0deg;
   }
   100% {
@@ -111,8 +113,8 @@ body {
   border-radius: 0 0 50% 50%;
 }
 
-.clock-inner .secondHand::before{
-  content: '';
+.clock-inner .secondHand::before {
+  content: "";
   position: absolute;
   top: 0;
   left: -0.28rem;
@@ -123,11 +125,11 @@ body {
   border-radius: 50%;
 }
 
-.clock-inner .secondHand::after{
-  content: '';
+.clock-inner .secondHand::after {
+  content: "";
   position: absolute;
   top: 0;
-  width: .2em;
+  width: 0.2em;
   height: 25%;
   margin: auto;
   background: rgb(88, 23, 202);
@@ -136,20 +138,20 @@ body {
 
 .clock-inner .content .day {
   position: absolute;
-  top: 6rem;
+  top: 4rem;
   left: 0;
   right: 0;
   font-size: 1.2rem;
-  color: rgba(255, 255, 255, .3);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .clock-inner .content .date {
   position: absolute;
-  top: 4rem;
+  top: 6rem;
   left: 0;
   right: 0;
   font-size: 1.4rem;
-  color: rgba(255, 255, 255, .8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .clock-inner .content .time {
@@ -190,19 +192,14 @@ body {
 }
 
 .clock-inner .content .alarm .seconds {
-  padding: .2rem 0;
+  padding: 0.2rem 0;
   width: 6.5rem;
   margin: 1rem auto;
   color: #fff;
   font-weight: 700;
   font-size: 1.1rem;
-  letter-spacing: .1rem;
-  background: rgba(255, 255, 255, .5);
-  box-shadow: inset -18px -18px 20px #30343c,
-              inset  18px 18px 20px #30343c;
-              border-radius: .5rem;
+  letter-spacing: 0.1rem;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: inset -18px -18px 20px #30343c, inset 18px 18px 20px #30343c;
+  border-radius: 0.5rem;
 }
-
-
-
-
