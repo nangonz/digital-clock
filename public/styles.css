@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #e5e9ec;
+  overflow: hidden;
+}
+
+.clock-outer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25rem;
+  height: 25rem;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 16px 16px 30px #bcbcbc, -8px -8px 20px #fafafa;
+}
+
+.clock-outer::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background: linear-gradient(
+    to right bottom rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.3)
+  );
+  backdrop-filter: blur(1px);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.clock-outer .indicator {
+  position: absolute;
+  width: 0.25rem;
+  height: 1rem;
+  background: rgb(88, 14, 215);
+  z-index: 1;
+}
+
+.clock-outer .indicator:nth-child(1) {
+  top: 0;
+}
+.clock-outer .indicator:nth-child(2) {
+  bottom: 0;
+}
+.clock-outer .indicator:nth-child(3) {
+  top: inherit;
+  right: 0.3rem;
+  rotate: 90deg;
+}
+.clock-outer .indicator:nth-child(4) {
+  top: inherit;
+  left: 0.3rem;
+  rotate: 90deg;
+}
+
+.clock-glass {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background: linear-gradient(#ffffff 90%, rgb(57, 155, 225), rgb(88, 14, 215));
+  backdrop-filter: blur(1px);
+  border-radius: 50%;
+  animation: pendulum 5s linear infinite;
+}
+
+@keyframes pendulum {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+.clock-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 23rem;
+  height: 23rem;
+  border-radius: 50%;
+  background: #292d32;
+  text-align: center;
+  z-index: 1;
+}
+
+.clock-inner .secondHand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 3px;
+  height: 50%;
+  rotate: 0;
+  border-radius: 0 0 50% 50%;
+  transform-origin: bottom;
+}
+
+.clock-inner .secondHand::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -0.28rem;
+  width: 1rem;
+  height: 1rem;
+  margin: auto;
+  background: rgb(88, 14, 215);
+  border-radius: 50%;
+}
+
+.clock-inner .secondHand::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0.2em;
+  height: 25%;
+  margin: auto;
+  background: rgb(88, 23, 202);
+  border-radius: 50%;
+}
+
+.clock-inner .content .day {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.clock-inner .content .date {
+  position: absolute;
+  top: 6rem;
+  left: 0;
+  right: 0;
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.clock-inner .content .time {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.clock-inner .content .time span {
+  font-size: 5.2rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+.clock-inner .content .am-pm {
+  position: absolute;
+  bottom: 8.5rem;
+  right: 6.5rem;
+  font-size: 1rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.clock-inner .content .alarm {
+  position: absolute;
+  bottom: 3rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.clock-inner .content .alarm .seconds {
+  padding: 0.2rem 0;
+  width: 6.5rem;
+  margin: 1rem auto;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.1rem;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: inset -18px -18px 20px #30343c, inset 18px 18px 20px #30343c;
+  border-radius: 0.5rem;
+}

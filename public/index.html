@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="/public/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js" defer></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <title>Modern Digital Clock</title>
+  </head>
+  <body>
+    <div class="clock">
+      <div class="container">
+        <div class="clock-outer">
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <span class="indicator"></span>
+          <div class="clock-inner">
+            <div class="content">
+              <p class="day"></p>
+              <p class="date"></p>
+              <p class="time">
+                <span class="hm"></span>
+              </p>
+              <p class="am-pm">pm</p>
+              <div class="alarm">
+                <p class="seconds">00.60</p>
+                <iconify-icon
+                  class="clockIcon"
+                  icon="material-symbols:alarm"
+                  style="color: rgb(70, 70, 193)"
+                  width="28"
+                ></iconify-icon>
+              </div>
+            </div>
+            <span class="secondHand"></span>
+          </div>
+          <span class="clock-glass"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
