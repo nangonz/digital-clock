@@ -209,3 +209,42 @@ body {
   color: #dfdfdf !important;
   cursor: pointer;
 }
+
+.clock-inner .alarmSettings {
+  position: relative;
+  visibility: hidden;
+  /* border: 2px solid red; */
+  width: 19rem;
+  height: 19rem;
+  border-radius: 50%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292d32;
+}
+
+.alarmSettings > input {
+  text-align: center;
+  font-size: 5.2rem;
+  font-weight: 900;
+  color: rgb(92, 154, 254);
+  width: 7.5rem;
+  height: 7rem;
+  background-color: #292d32;
+  border: 2px solid rgb(98, 98, 98);
+  border-radius: 1.5rem;
+}
+
+.alarmSettings .separation {
+  margin: 0.15rem;
+  font-size: 5.2rem;
+  color: rgb(92, 154, 254);
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+}
+
+.clock-inner .alarmSettings .checkIcon {
+  position: absolute;
+  bottom: 0;
+}

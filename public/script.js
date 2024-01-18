@@ -4,6 +4,7 @@ const hourElement = document.querySelector(".hm");
 const secondsElement = document.querySelector(".seconds");
 const am_pm = document.querySelector(".am-pm");
 const pointer = document.querySelector(".secondHand");
+const alarmConfig = document.querySelector(".alarmSettings");
 
 const days = {
   0: "Sunday",
@@ -70,3 +71,11 @@ function formatSeconds({ seconds }) {
 
   return `00.${formatSeconds}`;
 }
+
+const alarmSetting = document.querySelector(".clockIcon");
+alarmSetting.addEventListener("click", () => {
+  let elementVisibility = alarmConfig.style.visibility;
+  elementVisibility === "visible"
+    ? (alarmConfig.style.visibility = "hidden")
+    : (alarmConfig.style.visibility = "visible");
+});
