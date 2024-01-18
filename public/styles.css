@@ -204,3 +204,8 @@ body {
   box-shadow: inset -18px -18px 20px #30343c, inset 18px 18px 20px #30343c;
   border-radius: 0.5rem;
 }
+
+.clock-inner .content .alarm .clockIcon:hover {
+  color: #dfdfdf !important;
+  cursor: pointer;
+}
