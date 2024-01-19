@@ -11,7 +11,6 @@
     <title>Modern Digital Clock</title>
   </head>
   <body>
-    <h3 class="alarm-message">Hola Mundo</h3>
     <div class="clock">
       <div class="container">
         <div class="clock-outer">
@@ -39,15 +38,24 @@
             </div>
             <span class="secondHand"></span>
             <div class="alarmSettings">
+              <h3 class="alarm-message">Alarm Settings</h3>
               <input placeholder="--" name="hours-section" id="" />
               <span class="separation">:</span>
               <input placeholder="--" name="min-section" id="" />
-              <iconify-icon
-                class="checkIcon"
-                icon="lets-icons:check-fill"
-                style="color: lightgreen"
-                width="35"
-              ></iconify-icon>
+              <div class="alarmIconButtons">
+                <iconify-icon
+                  class="checkIcon"
+                  icon="lets-icons:check-fill"
+                  style="color: lightgreen"
+                  width="35"
+                ></iconify-icon>
+                <iconify-icon
+                  class="cancelIcon"
+                  icon="material-symbols:cancel-rounded"
+                  style="color: red"
+                  width="35"
+                ></iconify-icon>
+              </div>
             </div>
           </div>
           <span class="clock-glass"></span>

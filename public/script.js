@@ -53,7 +53,7 @@ function getTime() {
   if (checkAlarm()) {
     alarmMessage.innerHTML = "tu alarma está sonando";
   } else {
-    alarmMessage.innerHTML = "";
+    alarmMessage.innerHTML = "Alarm Settings";
   }
 }
 

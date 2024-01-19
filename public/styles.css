@@ -244,14 +244,21 @@ body {
   font-weight: 900;
 }
 
-.clock-inner .alarmSettings .checkIcon {
+.clock-inner .alarmSettings .alarmIconButtons {
   cursor: pointer;
   position: absolute;
-  bottom: 0.1rem;
+  bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
-.alarm-message {
+.clock-inner .alarmSettings .alarm-message {
   position: absolute;
-  top: 0;
+  top: 2.5rem;
   text-align: center;
+  color: #e4e4e4;
+  font-size: 1.25rem;
+  font-weight: 600;
 }
