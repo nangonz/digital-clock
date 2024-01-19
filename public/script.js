@@ -111,3 +111,18 @@ function checkAlarm() {
     return false;
   }
 }
+
+function cancelAlarmSettings() {
+  document.querySelector("input[name=hours-section").value = "";
+  document.querySelector("input[name=min-section").value = "";
+  alarmSetHourMin = {};
+}
+
+const cancelIconButton = document.querySelector(".cancelIcon");
+cancelIconButton.addEventListener("click", cancelAlarmSettings);
+
+function validateAlarmSettings({ hours, min }) {
+  if (hours.length == 1) {
+    hours.padStart("0", 2);
+  }
+}
