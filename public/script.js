@@ -74,8 +74,10 @@ function formatSeconds({ seconds }) {
 
 const alarmSetting = document.querySelector(".clockIcon");
 alarmSetting.addEventListener("click", () => {
-  let elementVisibility = alarmConfig.style.visibility;
-  elementVisibility === "visible"
-    ? (alarmConfig.style.visibility = "hidden")
-    : (alarmConfig.style.visibility = "visible");
+  alarmConfig.style.visibility = "visible";
+});
+
+const checkSettings = document.querySelector(".checkIcon");
+checkSettings.addEventListener("click", () => {
+  alarmConfig.style.visibility = "hidden";
 });
