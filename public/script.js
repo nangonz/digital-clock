@@ -80,4 +80,11 @@ alarmSetting.addEventListener("click", () => {
 const checkSettings = document.querySelector(".checkIcon");
 checkSettings.addEventListener("click", () => {
   alarmConfig.style.visibility = "hidden";
+  confirmAlarmSettings();
 });
+
+function confirmAlarmSettings() {
+  let hours = document.querySelector("input[name=hours-section");
+  let min = document.querySelector("input[name=min-section");
+  console.log(hours.value, min.value);
+}
