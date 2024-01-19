@@ -6,6 +6,8 @@ const am_pm = document.querySelector(".am-pm");
 const pointer = document.querySelector(".secondHand");
 const alarmConfig = document.querySelector(".alarmSettings");
 const alarmMessage = document.querySelector(".alarm-message");
+const validationMessage = document.querySelector(".validation-message");
+
 let alarmSetHourMin = {};
 
 const days = {
@@ -51,7 +53,7 @@ function getTime() {
   pointer.style.transform = `rotate(${seconds * 6}deg)`;
 
   if (checkAlarm()) {
-    alarmMessage.innerHTML = "tu alarma está sonando";
+    alarmMessage.innerHTML = "Time's up!";
   } else {
     alarmMessage.innerHTML = "Alarm Settings";
   }
@@ -86,17 +88,23 @@ alarmSetting.addEventListener("click", () => {
 });
 
 const checkSettings = document.querySelector(".checkIcon");
-checkSettings.addEventListener("click", () => {
-  confirmAlarmSettings();
-  alarmConfig.style.visibility = "hidden";
-});
+checkSettings.addEventListener("click", confirmAlarmSettings);
 
 function confirmAlarmSettings() {
   let hours = document.querySelector("input[name=hours-section").value;
   let min = document.querySelector("input[name=min-section").value;
-  alarmSetHourMin.hours = hours;
-  alarmSetHourMin.min = min;
-  return alarmSetHourMin;
+
+  if (validateAlarmSettings({ hours, min })) {
+    alarmSetHourMin.hours = hours;
+    alarmSetHourMin.min = min;
+    validationMessage.innerHTML = "";
+    alarmConfig.style.visibility = "hidden";
+    return alarmSetHourMin;
+  } else {
+    validationMessage.classList.add("error");
+    validationMessage.innerHTML = "incorrect number";
+    validationMessage.style.display = "flex";
+  }
 }
 
 function checkAlarm() {
@@ -115,6 +123,7 @@ function checkAlarm() {
 function cancelAlarmSettings() {
   document.querySelector("input[name=hours-section").value = "";
   document.querySelector("input[name=min-section").value = "";
+  validationMessage.style.display = "none";
   alarmSetHourMin = {};
 }
 
@@ -122,7 +131,24 @@ const cancelIconButton = document.querySelector(".cancelIcon");
 cancelIconButton.addEventListener("click", cancelAlarmSettings);
 
 function validateAlarmSettings({ hours, min }) {
-  if (hours.length == 1) {
-    hours.padStart("0", 2);
+  let valid = true;
+  if (hours == "" && min == "") return true;
+
+  if (
+    isNaN(Number(hours)) ||
+    Number(hours) < 0 ||
+    Number(hours) > 23 ||
+    hours.length != 2
+  ) {
+    valid = false;
   }
+  if (
+    isNaN(Number(min)) ||
+    Number(hours) < 0 ||
+    Number(hours) > 59 ||
+    min.length != 2
+  ) {
+    valid = false;
+  }
+  return valid;
 }
