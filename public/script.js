@@ -5,6 +5,8 @@ const secondsElement = document.querySelector(".seconds");
 const am_pm = document.querySelector(".am-pm");
 const pointer = document.querySelector(".secondHand");
 const alarmConfig = document.querySelector(".alarmSettings");
+const alarmMessage = document.querySelector(".alarm-message");
+let alarmSetHourMin = {};
 
 const days = {
   0: "Sunday",
@@ -47,6 +49,12 @@ function getTime() {
   secondsElement.innerHTML = formatSeconds({ seconds });
   am_pm.innerHTML = hours >= 12 ? "PM" : "AM";
   pointer.style.transform = `rotate(${seconds * 6}deg)`;
+
+  if (checkAlarm()) {
+    alarmMessage.innerHTML = "tu alarma está sonando";
+  } else {
+    alarmMessage.innerHTML = "";
+  }
 }
 
 setInterval(getTime, 0);
@@ -79,12 +87,27 @@ alarmSetting.addEventListener("click", () => {
 
 const checkSettings = document.querySelector(".checkIcon");
 checkSettings.addEventListener("click", () => {
-  alarmConfig.style.visibility = "hidden";
   confirmAlarmSettings();
+  alarmConfig.style.visibility = "hidden";
 });
 
 function confirmAlarmSettings() {
-  let hours = document.querySelector("input[name=hours-section");
-  let min = document.querySelector("input[name=min-section");
-  console.log(hours.value, min.value);
+  let hours = document.querySelector("input[name=hours-section").value;
+  let min = document.querySelector("input[name=min-section").value;
+  alarmSetHourMin.hours = hours;
+  alarmSetHourMin.min = min;
+  return alarmSetHourMin;
+}
+
+function checkAlarm() {
+  let currentTime = hourElement.innerHTML.split(":");
+  let [current_hour, current_min] = currentTime;
+  if (
+    current_hour == alarmSetHourMin.hours &&
+    current_min == alarmSetHourMin.min
+  ) {
+    return true;
+  } else {
+    return false;
+  }
 }
