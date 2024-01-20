@@ -206,8 +206,13 @@ body {
 }
 
 .clock-inner .content .alarm .clockIcon:hover {
-  color: #dfdfdf !important;
   cursor: pointer;
+  transform: scale(1.1);
+}
+
+.clock-inner .content .alarm .timerIcon:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .clock-inner .alarmSettings {
