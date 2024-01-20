@@ -49,7 +49,7 @@ body {
   width: 0.25rem;
   height: 1rem;
   background: rgb(53, 124, 216);
-  z-index: 1;
+  z-index: 2;
 }
 
 .clock-outer .indicator:nth-child(1) {
@@ -112,6 +112,7 @@ body {
   rotate: 0;
   border-radius: 0 0 50% 50%;
   transform-origin: bottom;
+  z-index: 5;
 }
 
 .clock-inner .secondHand::before {
@@ -205,6 +206,10 @@ body {
   border-radius: 0.5rem;
 }
 
+.clockIcon + .timerIcon {
+  margin-left: 1rem;
+}
+
 .clock-inner .content .alarm .clockIcon:hover {
   cursor: pointer;
   transform: scale(1.1);
@@ -217,16 +222,28 @@ body {
 
 .clock-inner .alarmSettings {
   position: relative;
-  visibility: hidden;
+  display: none;
   /* border: 2px solid red; */
-  width: 19rem;
-  height: 19rem;
+  width: 22rem;
+  height: 22rem;
   border-radius: 50%;
   z-index: 1;
-  display: flex;
   justify-content: center;
   align-items: center;
   background-color: #292d32;
+}
+
+.clock-inner .timerSettings {
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 22rem;
+  height: 22rem;
+  border-radius: 50%;
+  background-color: #292d32;
+  z-index: 3;
+  border: 2px solid red;
 }
 
 .alarmSettings > input {
