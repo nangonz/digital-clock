@@ -25,18 +25,44 @@
               <p class="time">
                 <span class="hm"></span>
               </p>
-              <p class="am-pm">pm</p>
+              <p class="am-pm"></p>
               <div class="alarm">
-                <p class="seconds">00.60</p>
+                <p class="seconds"></p>
                 <iconify-icon
                   class="clockIcon"
                   icon="material-symbols:alarm"
-                  style="color: rgb(70, 70, 193)"
-                  width="28"
+                  style="color: #1077fc"
+                  width="30"
                 ></iconify-icon>
               </div>
             </div>
             <span class="secondHand"></span>
+            <div class="alarmSettings">
+              <h3 class="alarm-message">Alarm Settings</h3>
+              <span class="validation-message"></span>
+              <input placeholder="--" name="hours-section" autocomplete="off" />
+              <span class="separation">:</span>
+              <input placeholder="--" name="min-section" autocomplete="off" />
+              <audio
+                id="alarmaAudio"
+                src="./alarm-sound.mp3"
+                preload="auto"
+              ></audio>
+              <div class="alarmIconButtons">
+                <iconify-icon
+                  class="checkIcon"
+                  icon="lets-icons:check-fill"
+                  style="color: lightgreen"
+                  width="35"
+                ></iconify-icon>
+                <iconify-icon
+                  class="cancelIcon"
+                  icon="material-symbols:cancel-rounded"
+                  style="color: red"
+                  width="35"
+                ></iconify-icon>
+              </div>
+            </div>
           </div>
           <span class="clock-glass"></span>
         </div>

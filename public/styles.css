@@ -204,3 +204,74 @@ body {
   box-shadow: inset -18px -18px 20px #30343c, inset 18px 18px 20px #30343c;
   border-radius: 0.5rem;
 }
+
+.clock-inner .content .alarm .clockIcon:hover {
+  color: #dfdfdf !important;
+  cursor: pointer;
+}
+
+.clock-inner .alarmSettings {
+  position: relative;
+  visibility: hidden;
+  /* border: 2px solid red; */
+  width: 19rem;
+  height: 19rem;
+  border-radius: 50%;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #292d32;
+}
+
+.alarmSettings > input {
+  outline: none;
+  box-shadow: 1px 1px 2px rgb(220, 220, 220);
+  caret-color: rgb(92, 154, 254);
+  text-align: center;
+  font-size: 5.2rem;
+  font-weight: 900;
+  color: rgb(92, 154, 254);
+  width: 7.5rem;
+  height: 7rem;
+  background-color: #292d32;
+  border: 2px solid rgb(92, 154, 254);
+  border-radius: 1.5rem;
+}
+
+.alarmSettings .separation {
+  margin: 0.15rem;
+  font-size: 5.2rem;
+  color: rgb(92, 154, 254);
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+}
+
+.clock-inner .alarmSettings .alarmIconButtons {
+  cursor: pointer;
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.clock-inner .alarmSettings .alarm-message {
+  position: absolute;
+  top: 2rem;
+  text-align: center;
+  color: #e4e4e4;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.clock-inner .alarmSettings .validation-message {
+  display: none;
+  position: absolute;
+  color: rgb(247, 73, 73);
+  top: 4rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+}
