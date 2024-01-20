@@ -7,6 +7,7 @@ const pointer = document.querySelector(".secondHand");
 const alarmConfig = document.querySelector(".alarmSettings");
 const alarmMessage = document.querySelector(".alarm-message");
 const validationMessage = document.querySelector(".validation-message");
+const alarmaAudio = document.getElementById("alarmaAudio");
 
 let alarmSetHourMin = {};
 
@@ -53,13 +54,15 @@ function getTime() {
   pointer.style.transform = `rotate(${seconds * 6}deg)`;
 
   if (checkAlarm()) {
+    if (seconds == 0) activarAlarma();
     alarmMessage.innerHTML = "Time's up!";
+    alarmConfig.style.visibility = "visible";
   } else {
     alarmMessage.innerHTML = "Alarm Settings";
   }
 }
 
-setInterval(getTime, 0);
+setInterval(getTime, 1000);
 
 function formatedDate({ monthDay, month, year }) {
   return `${monthDay} ${
@@ -124,6 +127,8 @@ function cancelAlarmSettings() {
   document.querySelector("input[name=hours-section").value = "";
   document.querySelector("input[name=min-section").value = "";
   validationMessage.style.display = "none";
+  alarmaAudio.pause();
+  alarmaAudio.currentTime = 0;
   alarmSetHourMin = {};
 }
 
@@ -151,4 +156,15 @@ function validateAlarmSettings({ hours, min }) {
     valid = false;
   }
   return valid;
+}
+
+function configurarAlarma(tiempoDeAlarmaEnMilisegundos) {
+  setTimeout(() => {
+    activarAlarma();
+  }, tiempoDeAlarmaEnMilisegundos);
+}
+
+function activarAlarma() {
+  alarmaAudio.play();
+  console.log("¡Alarma activada!");
 }
