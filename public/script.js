@@ -178,5 +178,7 @@ function activarAlarma() {
 }
 
 stopIcon.addEventListener("click", () => {
-  timerConfig.style.display = "none";
+  setTimeout(() => {
+    timerConfig.style.display = "none";
+  }, 750);
 });
