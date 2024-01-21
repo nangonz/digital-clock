@@ -5,9 +5,12 @@ const secondsElement = document.querySelector(".seconds");
 const am_pm = document.querySelector(".am-pm");
 const pointer = document.querySelector(".secondHand");
 const alarmConfig = document.querySelector(".alarmSettings");
+const timerConfig = document.querySelector(".timerSettings");
 const alarmMessage = document.querySelector(".alarm-message");
 const validationMessage = document.querySelector(".validation-message");
 const alarmaAudio = document.getElementById("alarmaAudio");
+const playIcon = document.querySelector(".playIcon");
+const stopIcon = document.querySelector(".stopIcon");
 
 let alarmSetHourMin = {};
 
@@ -56,7 +59,7 @@ function getTime() {
   if (checkAlarm()) {
     if (seconds == 0) activarAlarma();
     alarmMessage.innerHTML = "Time's up!";
-    alarmConfig.style.visibility = "visible";
+    alarmConfig.style.display = "flex";
   } else {
     alarmMessage.innerHTML = "Alarm Settings";
   }
@@ -87,7 +90,12 @@ function formatSeconds({ seconds }) {
 
 const alarmSetting = document.querySelector(".clockIcon");
 alarmSetting.addEventListener("click", () => {
-  alarmConfig.style.visibility = "visible";
+  alarmConfig.style.display = "flex";
+});
+
+const timerSettings = document.querySelector(".timerIcon");
+timerSettings.addEventListener("click", () => {
+  timerConfig.style.display = "flex";
 });
 
 const checkSettings = document.querySelector(".checkIcon");
@@ -101,7 +109,7 @@ function confirmAlarmSettings() {
     alarmSetHourMin.hours = hours;
     alarmSetHourMin.min = min;
     validationMessage.innerHTML = "";
-    alarmConfig.style.visibility = "hidden";
+    alarmConfig.style.display = "none";
     return alarmSetHourMin;
   } else {
     validationMessage.classList.add("error");
@@ -168,3 +176,7 @@ function activarAlarma() {
   alarmaAudio.play();
   console.log("¡Alarma activada!");
 }
+
+stopIcon.addEventListener("click", () => {
+  timerConfig.style.display = "none";
+});

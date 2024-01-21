@@ -49,7 +49,7 @@ body {
   width: 0.25rem;
   height: 1rem;
   background: rgb(53, 124, 216);
-  z-index: 1;
+  z-index: 2;
 }
 
 .clock-outer .indicator:nth-child(1) {
@@ -112,6 +112,7 @@ body {
   rotate: 0;
   border-radius: 0 0 50% 50%;
   transform-origin: bottom;
+  z-index: 5;
 }
 
 .clock-inner .secondHand::before {
@@ -205,20 +206,96 @@ body {
   border-radius: 0.5rem;
 }
 
-.clock-inner .content .alarm .clockIcon:hover {
-  color: #dfdfdf !important;
+.clockIcon + .timerIcon {
+  margin-left: 1rem;
+}
+
+.buttonIcon:hover {
   cursor: pointer;
+  transform: scale(1.1);
+}
+
+.clock-inner .timerSettings {
+  position: relative;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 22rem;
+  height: 22rem;
+  border-radius: 50%;
+  background-color: #292d32;
+  z-index: 3;
+}
+
+.clock-inner .timerSettings .timer-title {
+  position: absolute;
+  top: 2.5rem;
+  text-align: center;
+  color: #e4e4e4;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.clock-inner .timerSettings .timerIconButtons {
+  cursor: pointer;
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.clock-inner .timerSettings .work-break {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  top: 5.5rem;
+  width: 12rem;
+  height: 10rem;
+  border-radius: 1rem;
+}
+
+.clock-inner .timerSettings .work-break .worktime {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 1rem;
+}
+.clock-inner .timerSettings .work-break .breaktime {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-radius: 1rem;
+}
+
+.clock-inner .timerSettings .work-break .title-work,
+.title-break {
+  color: #e4e4e4;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.clock-inner .timerSettings .work-break .work-minutes,
+.break-minutes {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #e4e4e4;
+  font-size: 2.25rem;
+  font-weight: 600;
 }
 
 .clock-inner .alarmSettings {
   position: relative;
-  visibility: hidden;
+  display: none;
   /* border: 2px solid red; */
-  width: 19rem;
-  height: 19rem;
+  width: 22rem;
+  height: 22rem;
   border-radius: 50%;
   z-index: 1;
-  display: flex;
   justify-content: center;
   align-items: center;
   background-color: #292d32;
