@@ -9,6 +9,8 @@ const timerConfig = document.querySelector(".timerSettings");
 const alarmMessage = document.querySelector(".alarm-message");
 const validationMessage = document.querySelector(".validation-message");
 const alarmaAudio = document.getElementById("alarmaAudio");
+const playIcon = document.querySelector(".playIcon");
+const stopIcon = document.querySelector(".stopIcon");
 
 let alarmSetHourMin = {};
 
@@ -93,7 +95,6 @@ alarmSetting.addEventListener("click", () => {
 
 const timerSettings = document.querySelector(".timerIcon");
 timerSettings.addEventListener("click", () => {
-  alarmSetting.style.display = "none";
   timerConfig.style.display = "flex";
 });
 
@@ -175,3 +176,7 @@ function activarAlarma() {
   alarmaAudio.play();
   console.log("¡Alarma activada!");
 }
+
+stopIcon.addEventListener("click", () => {
+  timerConfig.style.display = "none";
+});

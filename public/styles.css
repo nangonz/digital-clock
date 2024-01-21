@@ -210,19 +210,14 @@ body {
   margin-left: 1rem;
 }
 
-.clock-inner .content .alarm .clockIcon:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-}
-
-.clock-inner .content .alarm .timerIcon:hover {
+.buttonIcon:hover {
   cursor: pointer;
   transform: scale(1.1);
 }
 
 .clock-inner .timerSettings {
   position: relative;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   width: 22rem;
