@@ -174,7 +174,6 @@ function configurarAlarma(tiempoDeAlarmaEnMilisegundos) {
 
 function activarAlarma() {
   alarmaAudio.play();
-  console.log("¡Alarma activada!");
 }
 
 // Pomodoro's Timer functionality
@@ -213,7 +212,7 @@ playIcon.addEventListener("click", () => {
 // timer's functionlity
 function startTimer() {
   if (isTimerRunning) {
-    console.log("timer is running now");
+    // console.log("timer is running now"); //replace for a message
     return;
   } else {
     start_worktime_countdown();
@@ -252,21 +251,18 @@ function start_worktime_countdown() {
 }
 
 function start_breaktime_countdown() {
-  console.log("breaktime countdown");
   timer_breakmin = Number(timer_breakmin) - 1;
   timer_breaksec = 10;
 
   const breaktime_countdownFunction = () => {
     //change display
     if (timer_breakmin == 0 && timer_breaksec == 0) {
-      console.log(timer_workmin, timer_worksec);
       timer_workmin = 2;
       timer_worksec = 0;
       timer_breakmin = 2;
       timer_breaksec = 0;
       clearInterval(breaktimeInterval);
       setTimeout(() => {
-        console.log(timer_workmin, timer_worksec);
         start_worktime_countdown();
       }, 1000);
     }
