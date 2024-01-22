@@ -194,8 +194,8 @@ let [timer_breakmin, timer_breaksec] = document
 
 // stop icon button
 stopIcon.addEventListener("click", () => {
-  document.querySelector(".work-minutes").innerHTML = "02:00";
-  document.querySelector(".break-minutes").innerHTML = "02:00";
+  document.querySelector(".work-minutes").innerHTML = "25:00";
+  document.querySelector(".break-minutes").innerHTML = "05:00";
   isTimerRunning = false;
   resetTimer();
   setTimeout(() => {
@@ -212,7 +212,6 @@ playIcon.addEventListener("click", () => {
 // timer's functionlity
 function startTimer() {
   if (isTimerRunning) {
-    // console.log("timer is running now"); //replace for a message
     return;
   } else {
     start_worktime_countdown();
@@ -223,16 +222,13 @@ function start_worktime_countdown() {
   toggleTimerActive({ element: breakTitle, action: "remove" });
   toggleTimerActive({ element: workTitle, action: "add" });
   timer_workmin = Number(timer_workmin) - 1;
-  timer_worksec = 10;
+  timer_worksec = 59;
 
   const worktime_countdownFunction = () => {
     //change display
     if (timer_workmin == 0 && timer_worksec == 0) {
       clearInterval(worktimeInterval);
-      timer_workmin = 2;
-      timer_worksec = 0;
-      timer_breakmin = 2;
-      timer_breaksec = 0;
+      resetVariables();
       setTimeout(() => {
         start_breaktime_countdown();
       }, 1000);
@@ -244,7 +240,7 @@ function start_worktime_countdown() {
     if (timer_worksec == 0) {
       setTimeout(() => {
         timer_workmin -= 1;
-        timer_worksec = 10;
+        timer_worksec = 59;
       }, 1000);
     }
   };
@@ -256,15 +252,12 @@ function start_breaktime_countdown() {
   toggleTimerActive({ element: workTitle, action: "remove" });
   toggleTimerActive({ element: breakTitle, action: "add" });
   timer_breakmin = Number(timer_breakmin) - 1;
-  timer_breaksec = 10;
+  timer_breaksec = 59;
 
   const breaktime_countdownFunction = () => {
     //change display
     if (timer_breakmin == 0 && timer_breaksec == 0) {
-      timer_workmin = 2;
-      timer_worksec = 0;
-      timer_breakmin = 2;
-      timer_breaksec = 0;
+      resetVariables();
       clearInterval(breaktimeInterval);
       setTimeout(() => {
         start_worktime_countdown();
@@ -276,7 +269,7 @@ function start_breaktime_countdown() {
     if (timer_breaksec == 0) {
       setTimeout(() => {
         timer_breakmin -= 1;
-        timer_breaksec = 10;
+        timer_breaksec = 59;
       }, 1000);
     }
   };
@@ -284,15 +277,19 @@ function start_breaktime_countdown() {
   breaktimeInterval = setInterval(breaktime_countdownFunction, 1000);
 }
 
+function resetVariables() {
+  timer_workmin = 25;
+  timer_worksec = 0;
+  timer_breakmin = 5;
+  timer_breaksec = 0;
+}
+
 function resetTimer() {
   toggleTimerActive({ element: workTitle, action: "remove" });
   toggleTimerActive({ element: breakTitle, action: "remove" });
   clearInterval(worktimeInterval);
   clearInterval(breaktimeInterval);
-  timer_workmin = 2;
-  timer_worksec = 0;
-  timer_breakmin = 2;
-  timer_breaksec = 0;
+  resetVariables();
 }
 
 function updateTimerDisplay(minutes, seconds, elementSelector) {
