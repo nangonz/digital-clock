@@ -177,8 +177,67 @@ function activarAlarma() {
   console.log("¡Alarma activada!");
 }
 
+// Pomodoro's Timer functionality
+
+// stop icon button
 stopIcon.addEventListener("click", () => {
   setTimeout(() => {
     timerConfig.style.display = "none";
   }, 750);
 });
+
+// play icon button
+playIcon.addEventListener("click", () => {
+  startTimer();
+});
+
+// Timer's variables
+
+const workTittle = document.querySelector(".title-work");
+const breakTittle = document.querySelector(".title-break");
+let [timer_workmin, timer_worksec] = document
+  .querySelector(".work-minutes")
+  .innerHTML.split(":");
+
+let workTime = 25;
+let breakTime = 5;
+
+let seconds = "00";
+
+function startTimer() {
+  if (timer_workmin == 0 && timer_worksec == 0) {
+    start_breaktime_countdown();
+  } else {
+    start_worktime_countdown();
+  }
+
+  // start countdown
+  // setInterval(timerFunction, 1000);
+}
+
+function start_worktime_countdown() {
+  timer_workmin = Number(timer_workmin) - 1;
+  timer_worksec = 59;
+
+  const countdownFunction = () => {
+    //change display
+    document.querySelector(".work-minutes").innerHTML = `${timer_workmin
+      .toString()
+      .padStart(2, "0")}:${timer_worksec.toString().padStart(2, "0")}`;
+
+    timer_worksec = timer_worksec - 1;
+    if (timer_worksec == 0) {
+      timer_worksec = 0;
+      setTimeout(() => {
+        timer_workmin -= 1;
+        timer_worksec = 59;
+      }, 1000);
+    }
+  };
+
+  setInterval(countdownFunction, 1000);
+}
+
+function start_breaktime_countdown() {
+  console.log("breaktime countdown");
+}
