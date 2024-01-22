@@ -198,12 +198,7 @@ stopIcon.addEventListener("click", () => {
   document.querySelector(".work-minutes").innerHTML = "02:00";
   document.querySelector(".break-minutes").innerHTML = "02:00";
   isTimerRunning = false;
-  clearInterval(worktimeInterval);
-  clearInterval(breaktimeInterval);
-  timer_workmin = 2;
-  timer_worksec = 0;
-  timer_breakmin = 2;
-  timer_breaksec = 0;
+  resetTimer();
   setTimeout(() => {
     timerConfig.style.display = "none";
   }, 500);
@@ -242,9 +237,7 @@ function start_worktime_countdown() {
       }, 1000);
     }
 
-    document.querySelector(".work-minutes").innerHTML = `${timer_workmin
-      .toString()
-      .padStart(2, "0")}:${timer_worksec.toString().padStart(2, "0")}`;
+    updateTimerDisplay(timer_workmin, timer_worksec, ".work-minutes");
 
     timer_worksec = timer_worksec - 1;
     if (timer_worksec == 0) {
@@ -277,9 +270,7 @@ function start_breaktime_countdown() {
         start_worktime_countdown();
       }, 1000);
     }
-    document.querySelector(".break-minutes").innerHTML = `${timer_breakmin
-      .toString()
-      .padStart(2, "0")}:${timer_breaksec.toString().padStart(2, "0")}`;
+    updateTimerDisplay(timer_breakmin, timer_breaksec, ".break-minutes");
 
     timer_breaksec = timer_breaksec - 1;
     if (timer_breaksec == 0) {
@@ -291,4 +282,19 @@ function start_breaktime_countdown() {
   };
 
   breaktimeInterval = setInterval(breaktime_countdownFunction, 1000);
+}
+
+function resetTimer() {
+  clearInterval(worktimeInterval);
+  clearInterval(breaktimeInterval);
+  timer_workmin = 2;
+  timer_worksec = 0;
+  timer_breakmin = 2;
+  timer_breaksec = 0;
+}
+
+function updateTimerDisplay(minutes, seconds, elementSelector) {
+  document.querySelector(elementSelector).innerHTML = `${minutes
+    .toString()
+    .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 }
