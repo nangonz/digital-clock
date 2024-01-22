@@ -178,23 +178,13 @@ function activarAlarma() {
 }
 
 // Pomodoro's Timer functionality
-
-// stop icon button
-stopIcon.addEventListener("click", () => {
-  setTimeout(() => {
-    timerConfig.style.display = "none";
-  }, 750);
-});
-
-// play icon button
-playIcon.addEventListener("click", () => {
-  startTimer();
-});
-
 // Timer's variables
 
 const workTittle = document.querySelector(".title-work");
 const breakTittle = document.querySelector(".title-break");
+let worktimeInterval;
+let breaktimeInterval;
+let isTimerRunning = false;
 let [timer_workmin, timer_worksec] = document
   .querySelector(".work-minutes")
   .innerHTML.split(":");
@@ -203,24 +193,49 @@ let [timer_breakmin, timer_breaksec] = document
   .querySelector(".break-minutes")
   .innerHTML.split(":");
 
-function startTimer() {
-  start_worktime_countdown();
+// stop icon button
+stopIcon.addEventListener("click", () => {
+  document.querySelector(".work-minutes").innerHTML = "02:00";
+  document.querySelector(".break-minutes").innerHTML = "02:00";
+  isTimerRunning = false;
+  clearInterval(worktimeInterval);
+  clearInterval(breaktimeInterval);
+  timer_workmin = 2;
+  timer_worksec = 0;
+  timer_breakmin = 2;
+  timer_breaksec = 0;
+  setTimeout(() => {
+    timerConfig.style.display = "none";
+  }, 500);
+});
 
-  // start countdown
-  // setInterval(timerFunction, 1000);
+// play icon button
+playIcon.addEventListener("click", () => {
+  startTimer();
+  isTimerRunning = true;
+});
+
+// timer's functionlity
+function startTimer() {
+  if (isTimerRunning) {
+    console.log("timer is running now");
+    return;
+  } else {
+    start_worktime_countdown();
+  }
 }
 
 function start_worktime_countdown() {
   timer_workmin = Number(timer_workmin) - 1;
-  timer_worksec = 59;
+  timer_worksec = 10;
 
-  const countdownFunction = () => {
+  const worktime_countdownFunction = () => {
     //change display
     if (timer_workmin == 0 && timer_worksec == 0) {
       clearInterval(worktimeInterval);
-      timer_workmin = 25;
+      timer_workmin = 2;
       timer_worksec = 0;
-      timer_breakmin = 5;
+      timer_breakmin = 2;
       timer_breaksec = 0;
       setTimeout(() => {
         start_breaktime_countdown();
@@ -235,26 +250,26 @@ function start_worktime_countdown() {
     if (timer_worksec == 0) {
       setTimeout(() => {
         timer_workmin -= 1;
-        timer_worksec = 59;
+        timer_worksec = 10;
       }, 1000);
     }
   };
 
-  let worktimeInterval = setInterval(countdownFunction, 1000);
+  worktimeInterval = setInterval(worktime_countdownFunction, 1000);
 }
 
 function start_breaktime_countdown() {
   console.log("breaktime countdown");
   timer_breakmin = Number(timer_breakmin) - 1;
-  timer_breaksec = 59;
+  timer_breaksec = 10;
 
   const breaktime_countdownFunction = () => {
     //change display
     if (timer_breakmin == 0 && timer_breaksec == 0) {
       console.log(timer_workmin, timer_worksec);
-      timer_workmin = 25;
+      timer_workmin = 2;
       timer_worksec = 0;
-      timer_breakmin = 5;
+      timer_breakmin = 2;
       timer_breaksec = 0;
       clearInterval(breaktimeInterval);
       setTimeout(() => {
@@ -270,10 +285,10 @@ function start_breaktime_countdown() {
     if (timer_breaksec == 0) {
       setTimeout(() => {
         timer_breakmin -= 1;
-        timer_breaksec = 59;
+        timer_breaksec = 10;
       }, 1000);
     }
   };
 
-  let breaktimeInterval = setInterval(breaktime_countdownFunction, 1000);
+  breaktimeInterval = setInterval(breaktime_countdownFunction, 1000);
 }
