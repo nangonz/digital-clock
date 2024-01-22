@@ -179,8 +179,8 @@ function activarAlarma() {
 // Pomodoro's Timer functionality
 // Timer's variables
 
-const workTittle = document.querySelector(".title-work");
-const breakTittle = document.querySelector(".title-break");
+const workTitle = document.querySelector(".worktime");
+const breakTitle = document.querySelector(".breaktime");
 let worktimeInterval;
 let breaktimeInterval;
 let isTimerRunning = false;
@@ -220,6 +220,8 @@ function startTimer() {
 }
 
 function start_worktime_countdown() {
+  toggleTimerActive({ element: breakTitle, action: "remove" });
+  toggleTimerActive({ element: workTitle, action: "add" });
   timer_workmin = Number(timer_workmin) - 1;
   timer_worksec = 10;
 
@@ -251,6 +253,8 @@ function start_worktime_countdown() {
 }
 
 function start_breaktime_countdown() {
+  toggleTimerActive({ element: workTitle, action: "remove" });
+  toggleTimerActive({ element: breakTitle, action: "add" });
   timer_breakmin = Number(timer_breakmin) - 1;
   timer_breaksec = 10;
 
@@ -281,6 +285,8 @@ function start_breaktime_countdown() {
 }
 
 function resetTimer() {
+  toggleTimerActive({ element: workTitle, action: "remove" });
+  toggleTimerActive({ element: breakTitle, action: "remove" });
   clearInterval(worktimeInterval);
   clearInterval(breaktimeInterval);
   timer_workmin = 2;
@@ -293,4 +299,8 @@ function updateTimerDisplay(minutes, seconds, elementSelector) {
   document.querySelector(elementSelector).innerHTML = `${minutes
     .toString()
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+}
+
+function toggleTimerActive({ element, action }) {
+  element.classList[action]("active-timer");
 }
