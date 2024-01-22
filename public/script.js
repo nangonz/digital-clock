@@ -199,17 +199,12 @@ let [timer_workmin, timer_worksec] = document
   .querySelector(".work-minutes")
   .innerHTML.split(":");
 
-let workTime = 25;
-let breakTime = 5;
-
-let seconds = "00";
+let [timer_breakmin, timer_breaksec] = document
+  .querySelector(".break-minutes")
+  .innerHTML.split(":");
 
 function startTimer() {
-  if (timer_workmin == 0 && timer_worksec == 0) {
-    start_breaktime_countdown();
-  } else {
-    start_worktime_countdown();
-  }
+  start_worktime_countdown();
 
   // start countdown
   // setInterval(timerFunction, 1000);
@@ -221,13 +216,23 @@ function start_worktime_countdown() {
 
   const countdownFunction = () => {
     //change display
+    if (timer_workmin == 0 && timer_worksec == 0) {
+      clearInterval(worktimeInterval);
+      timer_workmin = 25;
+      timer_worksec = 0;
+      timer_breakmin = 5;
+      timer_breaksec = 0;
+      setTimeout(() => {
+        start_breaktime_countdown();
+      }, 1000);
+    }
+
     document.querySelector(".work-minutes").innerHTML = `${timer_workmin
       .toString()
       .padStart(2, "0")}:${timer_worksec.toString().padStart(2, "0")}`;
 
     timer_worksec = timer_worksec - 1;
     if (timer_worksec == 0) {
-      timer_worksec = 0;
       setTimeout(() => {
         timer_workmin -= 1;
         timer_worksec = 59;
@@ -235,9 +240,40 @@ function start_worktime_countdown() {
     }
   };
 
-  setInterval(countdownFunction, 1000);
+  let worktimeInterval = setInterval(countdownFunction, 1000);
 }
 
 function start_breaktime_countdown() {
   console.log("breaktime countdown");
+  timer_breakmin = Number(timer_breakmin) - 1;
+  timer_breaksec = 59;
+
+  const breaktime_countdownFunction = () => {
+    //change display
+    if (timer_breakmin == 0 && timer_breaksec == 0) {
+      console.log(timer_workmin, timer_worksec);
+      timer_workmin = 25;
+      timer_worksec = 0;
+      timer_breakmin = 5;
+      timer_breaksec = 0;
+      clearInterval(breaktimeInterval);
+      setTimeout(() => {
+        console.log(timer_workmin, timer_worksec);
+        start_worktime_countdown();
+      }, 1000);
+    }
+    document.querySelector(".break-minutes").innerHTML = `${timer_breakmin
+      .toString()
+      .padStart(2, "0")}:${timer_breaksec.toString().padStart(2, "0")}`;
+
+    timer_breaksec = timer_breaksec - 1;
+    if (timer_breaksec == 0) {
+      setTimeout(() => {
+        timer_breakmin -= 1;
+        timer_breaksec = 59;
+      }, 1000);
+    }
+  };
+
+  let breaktimeInterval = setInterval(breaktime_countdownFunction, 1000);
 }
