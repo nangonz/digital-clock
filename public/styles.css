@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:wght@600;700;800;900&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -217,7 +217,7 @@ body {
 
 .clock-inner .timerSettings {
   position: relative;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   width: 22rem;
@@ -283,9 +283,15 @@ body {
   display: flex;
   justify-content: center;
   text-align: center;
+  font-family: "Azeret Mono", "Poppins", system-ui, Roboto;
   color: #e4e4e4;
   font-size: 2.25rem;
-  font-weight: 600;
+  font-weight: 900;
+}
+
+.clock-inner .timerSettings .work-break .active-timer {
+  transform: scale(1.2);
+  text-shadow: 1px 2px 1px rgb(0, 51, 255);
 }
 
 .clock-inner .alarmSettings {
