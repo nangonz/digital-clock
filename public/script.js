@@ -9,6 +9,7 @@ const timerConfig = document.querySelector(".timerSettings");
 const alarmMessage = document.querySelector(".alarm-message");
 const validationMessage = document.querySelector(".validation-message");
 const alarmaAudio = document.getElementById("alarmaAudio");
+const timerAudio = document.getElementById("timerAudio");
 const playIcon = document.querySelector(".playIcon");
 const stopIcon = document.querySelector(".stopIcon");
 
@@ -166,14 +167,12 @@ function validateAlarmSettings({ hours, min }) {
   return valid;
 }
 
-function configurarAlarma(tiempoDeAlarmaEnMilisegundos) {
-  setTimeout(() => {
-    activarAlarma();
-  }, tiempoDeAlarmaEnMilisegundos);
-}
-
 function activarAlarma() {
   alarmaAudio.play();
+}
+
+function activarTimerSound() {
+  timerAudio.play();
 }
 
 // Pomodoro's Timer functionality
@@ -238,6 +237,7 @@ function start_worktime_countdown() {
 
     timer_worksec = timer_worksec - 1;
     if (timer_worksec == 0) {
+      activarTimerSound();
       setTimeout(() => {
         timer_workmin -= 1;
         timer_worksec = 59;
@@ -267,6 +267,7 @@ function start_breaktime_countdown() {
 
     timer_breaksec = timer_breaksec - 1;
     if (timer_breaksec == 0) {
+      activarTimerSound();
       setTimeout(() => {
         timer_breakmin -= 1;
         timer_breaksec = 59;
