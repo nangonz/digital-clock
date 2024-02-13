@@ -58,7 +58,7 @@ function getTime() {
   pointer.style.transform = `rotate(${seconds * 6}deg)`;
 
   if (checkAlarm()) {
-    if (seconds == 0) activarAlarma();
+    if (seconds == 0) activateAlarm();
     alarmMessage.innerHTML = "Time's up!";
     alarmConfig.style.display = "flex";
   } else {
@@ -167,7 +167,7 @@ function validateAlarmSettings({ hours, min }) {
   return valid;
 }
 
-function activarAlarma() {
+function activateAlarm() {
   alarmaAudio.play();
 }
 
